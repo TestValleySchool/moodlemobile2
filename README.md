@@ -11,5 +11,6 @@ This is the primary repository of source code for the official Moodle Mobile app
 
 License
 -------
+The Test Valley School logo is not covered by the licence below and is copyright 2009-2019 Test Valley School.
 
 [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
