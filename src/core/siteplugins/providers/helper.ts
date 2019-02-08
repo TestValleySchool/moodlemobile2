@@ -672,14 +672,20 @@ export class CoreSitePluginsHelperProvider {
             return;
         }
 
-        this.logger.debug('Register site plugin in main menu delegate:', plugin, handlerSchema, initResult);
+        this.logger.error('Register site plugin in main menu delegate:', plugin, handlerSchema, initResult);
 
         // Create and register the handler.
         const uniqueName = this.sitePluginsProvider.getHandlerUniqueName(plugin, handlerName),
             prefixedTitle = this.getPrefixedString(plugin.addon, handlerSchema.displaydata.title);
 
+        //TVS -- Parent Progress View -- patch title of menu item
+        let prefixedTitlePatched = prefixedTitle;
+        if (plugin.component == "report_parentprogressview") {
+            prefixedTitlePatched = prefixedTitlePatched.substring(prefixedTitlePatched.indexOf('plugin.report_parentprogressview.')+('plugin.report_parentprogressview.').length);
+        }
+
         this.mainMenuDelegate.registerHandler(
-                new CoreSitePluginsMainMenuHandler(uniqueName, prefixedTitle, plugin, handlerSchema, initResult));
+                new CoreSitePluginsMainMenuHandler(uniqueName, prefixedTitlePatched, plugin, handlerSchema, initResult));
 
         return uniqueName;
     }

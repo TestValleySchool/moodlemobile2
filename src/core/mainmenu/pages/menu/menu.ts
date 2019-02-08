@@ -59,27 +59,25 @@ export class CoreMainMenuPage implements OnDestroy {
             displaySiteHome = site.getInfo() && site.getInfo().userhomepage === 0;
 
 
-	    /*
-	     * Control bottom bar tabs by removing/adding from/to this array.
-	     */
+        /*
+         * Control bottom bar tabs by removing/adding from/to this array.
+         */
 
-	    this.subscription = this.menuDelegate.getHandlers().subscribe((handlers) => {
-	    console.log(handlers);
+        this.subscription = this.menuDelegate.getHandlers().subscribe((handlers) => {
+        
 
-	    // place PPV tab early after Home
-		    handlers.sort(function(a,b) {
-			    if (a.title.indexOf('plugin.report_parentprogressview') != -1 &&
-				    b.title.indexOf('home') == -1
-			    ) {
-				    return -1;
-			    }
-			    if (a.title.indexOf('home') != -1) {
-				    return -1;
-			    }
-		    });
+        // place PPV tab early after Home
+        handlers.forEach(function(handler) {
+            if (handler.name.indexOf("report_parentprogressview") == 0) {
+                handler.priority = 1200;
+            }
+        });
+        
+        handlers.sort((a,b) => {
+            return b.priority - a.priority;
+        });
 
-	    handlers = handlers.slice(0, CoreMainMenuProvider.NUM_MAIN_HANDLERS); // Get main handlers.
-	    console.log(handlers);
+        handlers = handlers.slice(0, CoreMainMenuProvider.NUM_MAIN_HANDLERS); // Get main handlers.
 
             // Re-build the list of tabs. If a handler is already in the list, use existing object to prevent re-creating the tab.
             const newTabs = [];
