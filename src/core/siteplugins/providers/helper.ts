@@ -672,7 +672,7 @@ export class CoreSitePluginsHelperProvider {
             return;
         }
 
-        this.logger.error('Register site plugin in main menu delegate:', plugin, handlerSchema, initResult);
+        //this.logger.error('Register site plugin in main menu delegate:', plugin, handlerSchema, initResult);
 
         // Create and register the handler.
         const uniqueName = this.sitePluginsProvider.getHandlerUniqueName(plugin, handlerName),
