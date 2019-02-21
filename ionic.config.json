@@ -7,5 +7,7 @@
     "gulp": {}
   },
   "siteurl": "https://intranet.testvalley.hants.sch.uk/moodle/",
-  "watchPatterns": []
+  "watchPatterns": [],
+  "pro_id": "uk.sch.hants.testvalley.tvsmoodlemobile",
+  "id": "uk.sch.hants.testvalley.tvsmoodlemobile"
 }
