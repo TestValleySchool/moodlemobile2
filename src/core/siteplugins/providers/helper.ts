@@ -564,7 +564,7 @@ export class CoreSitePluginsHelperProvider {
 
             delegate.registerHandler(handler);
 
-            return plugin.component;
+            return handlerSchema.moodlecomponent || plugin.component;
         }).catch((err) => {
             this.logger.error('Error executing main method', plugin.component, handlerSchema.method, err);
         });
@@ -583,7 +583,7 @@ export class CoreSitePluginsHelperProvider {
         return this.registerComponentInitHandler(plugin, handlerName, handlerSchema, this.assignFeedbackDelegate,
                     (uniqueName: string, result: any) => {
 
-            const type = plugin.component.replace('assignfeedback_', ''),
+            const type = (handlerSchema.moodlecomponent || plugin.component).replace('assignfeedback_', ''),
                 prefix = this.getPrefixForStrings(plugin.addon);
 
             return new CoreSitePluginsAssignFeedbackHandler(this.translate, uniqueName, type, prefix);
@@ -603,7 +603,7 @@ export class CoreSitePluginsHelperProvider {
         return this.registerComponentInitHandler(plugin, handlerName, handlerSchema, this.assignSubmissionDelegate,
                     (uniqueName: string, result: any) => {
 
-            const type = plugin.component.replace('assignsubmission_', ''),
+            const type = (handlerSchema.moodlecomponent || plugin.component).replace('assignsubmission_', ''),
                 prefix = this.getPrefixForStrings(plugin.addon);
 
             return new CoreSitePluginsAssignSubmissionHandler(this.translate, uniqueName, type, prefix);
@@ -623,7 +623,7 @@ export class CoreSitePluginsHelperProvider {
 
         // Create and register the handler.
         const uniqueName = this.sitePluginsProvider.getHandlerUniqueName(plugin, handlerName),
-            formatName = plugin.component.replace('format_', '');
+            formatName = (handlerSchema.moodlecomponent || plugin.component).replace('format_', '');
         this.courseFormatDelegate.registerHandler(new CoreSitePluginsCourseFormatHandler(uniqueName, formatName, handlerSchema));
 
         return formatName;
@@ -715,7 +715,7 @@ export class CoreSitePluginsHelperProvider {
         // Create and register the handler.
         const uniqueName = this.sitePluginsProvider.getHandlerUniqueName(plugin, handlerName),
             prefixedTitle = this.getPrefixedString(plugin.addon, handlerSchema.displaydata.title),
-            processorName = plugin.component.replace('message_', '');
+            processorName = (handlerSchema.moodlecomponent || plugin.component).replace('message_', '');
 
         this.messageOutputDelegate.registerHandler(new CoreSitePluginsMessageOutputHandler(uniqueName, processorName,
                 prefixedTitle, plugin, handlerSchema, initResult));
@@ -744,7 +744,7 @@ export class CoreSitePluginsHelperProvider {
 
         // Create and register the handler.
         const uniqueName = this.sitePluginsProvider.getHandlerUniqueName(plugin, handlerName),
-            modName = plugin.component.replace('mod_', '');
+            modName = (handlerSchema.moodlecomponent || plugin.component).replace('mod_', '');
 
         this.moduleDelegate.registerHandler(new CoreSitePluginsModuleHandler(uniqueName, modName, handlerSchema, initResult));
 
@@ -771,7 +771,7 @@ export class CoreSitePluginsHelperProvider {
         return this.registerComponentInitHandler(plugin, handlerName, handlerSchema, this.questionDelegate,
                     (uniqueName: string, result: any) => {
 
-            return new CoreSitePluginsQuestionHandler(uniqueName, plugin.component);
+            return new CoreSitePluginsQuestionHandler(uniqueName, handlerSchema.moodlecomponent || plugin.component);
         });
     }
 
@@ -788,7 +788,7 @@ export class CoreSitePluginsHelperProvider {
         return this.registerComponentInitHandler(plugin, handlerName, handlerSchema, this.questionBehaviourDelegate,
                     (uniqueName: string, result: any) => {
 
-            const type = plugin.component.replace('qbehaviour_', '');
+            const type = (handlerSchema.moodlecomponent || plugin.component).replace('qbehaviour_', '');
 
             return new CoreSitePluginsQuestionBehaviourHandler(this.questionProvider, uniqueName, type, result.templates.length);
         });
@@ -807,7 +807,8 @@ export class CoreSitePluginsHelperProvider {
         return this.registerComponentInitHandler(plugin, handlerName, handlerSchema, this.accessRulesDelegate,
                     (uniqueName: string, result: any) => {
 
-            return new CoreSitePluginsQuizAccessRuleHandler(uniqueName, plugin.component, result.templates.length);
+            return new CoreSitePluginsQuizAccessRuleHandler(uniqueName, handlerSchema.moodlecomponent || plugin.component,
+                    result.templates.length);
         });
     }
 
@@ -882,7 +883,7 @@ export class CoreSitePluginsHelperProvider {
         return this.registerComponentInitHandler(plugin, handlerName, handlerSchema, this.profileFieldDelegate,
                     (uniqueName: string, result: any) => {
 
-            const fieldType = plugin.component.replace('profilefield_', '');
+            const fieldType = (handlerSchema.moodlecomponent || plugin.component).replace('profilefield_', '');
 
             return new CoreSitePluginsUserProfileFieldHandler(uniqueName, fieldType);
         });
@@ -902,7 +903,7 @@ export class CoreSitePluginsHelperProvider {
         return this.registerComponentInitHandler(plugin, handlerName, handlerSchema, this.workshopAssessmentStrategyDelegate,
                     (uniqueName: string, result: any) => {
 
-            const strategyName = plugin.component.replace('workshopform_', '');
+            const strategyName = (handlerSchema.moodlecomponent || plugin.component).replace('workshopform_', '');
 
             return new CoreSitePluginsWorkshopAssessmentStrategyHandler(uniqueName, strategyName);
         });
