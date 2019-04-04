@@ -79,10 +79,9 @@
     "@types/promise.prototype.finally": "2.0.2",
     "chart.js": "2.7.2",
     "com-darryncampbell-cordova-plugin-intent": "1.1.1",
-    "cordova-android": "7.1.2",
+    "cordova-android": "^7.1.4",
     "cordova-android-support-gradle-release": "2.0.1",
     "cordova-clipboard": "1.2.1",
-    "cordova-ios": "4.5.5",
     "cordova-plugin-badge": "0.8.8",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-customurlscheme": "4.3.0",
@@ -93,7 +92,6 @@
     "cordova-plugin-globalization": "1.11.0",
     "cordova-plugin-inappbrowser": "3.0.0",
     "cordova-plugin-ionic-keyboard": "2.1.3",
-    "cordova-plugin-local-notification": "0.9.0-beta.3",
     "cordova-plugin-media-capture": "3.0.2",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-screen-orientation": "3.0.1",
@@ -101,7 +99,6 @@
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-plugin-zip": "3.1.0",
-    "cordova-sqlite-storage": "2.6.0",
     "cordova-support-google-services": "1.2.1",
     "es6-promise-plugin": "4.2.2",
     "font-awesome": "4.7.0",
@@ -117,7 +114,8 @@
     "sw-toolbox": "3.6.0",
     "ts-md5": "1.2.4",
     "web-animations-js": "2.3.1",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "cordova-plugin-local-notifications-mm": "~1.0.13"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.2",
@@ -139,8 +137,7 @@
   },
   "cordova": {
     "platforms": [
-      "android",
-      "ios"
+      "android"
     ],
     "plugins": {
       "com-darryncampbell-cordova-plugin-intent": {},
@@ -160,7 +157,6 @@
       "cordova-plugin-globalization": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-local-notification": {},
       "cordova-plugin-media-capture": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-screen-orientation": {},
@@ -168,12 +164,12 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-zip": {},
-      "cordova-sqlite-storage": {},
       "nl.kingsquare.cordova.background-audio": {},
       "phonegap-plugin-push": {
         "ANDROID_SUPPORT_V13_VERSION": "27.+",
         "FCM_VERSION": "17.0.+"
-      }
+      },
+      "cordova-plugin-local-notifications-mm": {}
     }
   },
   "main": "desktop/electron.js",
