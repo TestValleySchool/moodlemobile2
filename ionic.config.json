@@ -1,12 +1,12 @@
 {
-  "name": "testvalleymoodlemobile",
+  "name": "hwcsmoodlemobile",
   "integrations": {
     "cordova": {},
     "gulp": {}
   },
   "type": "ionic-angular",
-  "siteurl": "https://intranet.testvalley.hants.sch.uk/moodle/",
+  "siteurl": "https://vle.harrowway.hants.sch.uk/",
   "watchPatterns": [],
-  "pro_id": "uk.sch.hants.testvalley.tvsmoodlemobile",
-  "id": "uk.sch.hants.testvalley.tvsmoodlemobile"
+  "pro_id": "uk.sch.hants.harrowway.hwcsmoodlemobile",
+  "id": "uk.sch.hants.harrowway.hwcsmoodlemobile"
 }
