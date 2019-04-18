@@ -145,5 +145,6 @@
         <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|screenLayout|smallestScreenSize" android:debuggable="true" />
     </edit-config>
     <plugin name="cordova-plugin-local-notifications-mm" spec="~1.0.13" />
+    <plugin name="cordova-plugin-firebase" spec="2.0.5" />
     <engine name="android" spec="^7.1.4" />
 </widget>
