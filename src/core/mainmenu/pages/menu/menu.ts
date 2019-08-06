@@ -101,6 +101,7 @@ export class CoreMainMenuPage implements OnDestroy {
         handlers.forEach(function(handler) {
             if (handler.name.indexOf("report_parentprogressview") == 0) {
                 handler.priority = 1200;
+                handler.onlyInMore = false;
             }
         });
         
@@ -111,7 +112,7 @@ export class CoreMainMenuPage implements OnDestroy {
         handlers = handlers.slice(0, CoreMainMenuProvider.NUM_MAIN_HANDLERS); // Get main handlers.
             // Remove the handlers that should only appear in the More menu.
             this.allHandlers = handlers.filter((handler) => {
-                return !handler.onlyInMore && (handler.name.indexOf("report_parentprogressview") == -1);
+                return !handler.onlyInMore;
             });
 
             this.initHandlers();
