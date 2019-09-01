@@ -157,9 +157,8 @@
     <config-file parent="NSPhotoLibraryAddUsageDescription" target="*-Info.plist">
         <string>This is required if you want to save images from Moodle to your Photo Library.</string>
     </config-file>
-
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <engine name="ios" spec="4.5.5" />
     <plugin name="cordova-sqlite-storage" spec="^3.2.1" />
-    <engine name="android" spec="~7.1.4" />
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="^7.1.4" />
 </widget>
