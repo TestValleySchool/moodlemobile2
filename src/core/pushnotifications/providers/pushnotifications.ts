@@ -206,6 +206,7 @@ export class CorePushNotificationsProvider {
      * @return {boolean} Whether the device can be registered in Moodle.
      */
     canRegisterOnMoodle(): boolean {
+        this.logger.log('canRegisterOnMoodle: ' + this.pushID + ' ' + this.appProvider.isMobile().toString() + ' ' + (this.pushID && this.appProvider.isMobile()).toString());
         return this.pushID && this.appProvider.isMobile();
     }
 
@@ -659,6 +660,9 @@ export class CorePushNotificationsProvider {
      */
     registerDevice(): Promise<any> {
         try {
+            
+            this.logger.log('TVS: registerDevice() called');
+
             // Check if sound is enabled for notifications.
             return this.getOptions().then((options) => {
                 const pushObject: PushObject = this.push.init(options);
@@ -675,6 +679,7 @@ export class CorePushNotificationsProvider {
                     // Execute the callback in the Angular zone, so change detection doesn't stop working.
                     this.zone.run(() => {
                         this.pushID = data.registrationId;
+                        this.logger.log('TVS: registration id = ' + data.registrationId);
                         if (this.sitesProvider.isLoggedIn()) {
                             this.registerDeviceOnMoodle().catch((error) => {
                                 this.logger.warn('Can\'t register device', error);
@@ -686,6 +691,7 @@ export class CorePushNotificationsProvider {
                 pushObject.on('error').subscribe((error: any) => {
                     // Execute the callback in the Angular zone, so change detection doesn't stop working.
                     this.zone.run(() => {
+                        this.logger.log('TVS: error = ' + error);
                         this.logger.warn('Error with Push plugin', error);
                     });
                 });
@@ -707,8 +713,10 @@ export class CorePushNotificationsProvider {
      */
     registerDeviceOnMoodle(siteId?: string, forceUnregister?: boolean): Promise<any> {
         this.logger.debug('Register device on Moodle.');
+        this.logger.log('Register device on Moodle');
 
         if (!this.canRegisterOnMoodle()) {
+            this.logger.log('Cannot register device on Moodle. Rejecting');
             return Promise.reject(null);
         }
 
@@ -735,6 +743,8 @@ export class CorePushNotificationsProvider {
                 });
             }
         }).then(() => {
+            this.logger.log('Register device promise chain -- add user device section');
+            this.logger.log('result.register = ' + result.register);
             if (result.register) {
                 // Now register the device.
                 return site.write('core_user_add_user_device', this.utils.clone(data)).then((response) => {
