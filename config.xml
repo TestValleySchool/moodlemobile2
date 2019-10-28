@@ -1,15 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<<<<<<< HEAD
 <widget id="uk.sch.hants.harrowway.hwcsmoodlemobile" version="3.6.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Harrow Way Moodle</name>
     <description>Moodle app for Harrow Way Community School</description>
     <author email="mobile@moodle.com" href="http://moodle.com">Moodle Mobile team and Mr P Upfold</author>
-=======
-<widget id="uk.sch.hants.testvalley.tvsmoodlemobile" version="3.7.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>TVS Moodle</name>
-    <description>Moodle app for Test Valley School</description>
-    <author email="office@testvalley.hants.sch.uk" href="https://www.testvalley.hants.sch.uk/">Moodle Mobile team and Mr P Upfold</author>
->>>>>>> testvalleyschool
     <content src="index.html" />
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
@@ -167,8 +160,7 @@
     <config-file parent="NSPhotoLibraryAddUsageDescription" target="*-Info.plist">
         <string>This is required if you want to save images from Moodle to your Photo Library.</string>
     </config-file>
-    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-sqlite-storage" spec="^3.2.1" />
     <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="^7.1.4" />
+    <engine name="android" spec="7.1.4" />
 </widget>
