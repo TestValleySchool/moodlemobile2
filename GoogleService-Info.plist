@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>38616514770-mc6cs8hvjkhcp9gp333r6ovgappgdua0.apps.googleusercontent.com</string>
+	<string>38616514770-sccegnsjksjj6137l00liou81entmf2s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.38616514770-mc6cs8hvjkhcp9gp333r6ovgappgdua0</string>
+	<string>com.googleusercontent.apps.38616514770-sccegnsjksjj6137l00liou81entmf2s</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBo_QDPRS2B1BIf4_79WGR4xYDhEkatrXk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>uk.sch.testvalley.tvsmoodlemobile</string>
+	<string>uk.sch.hants.testvalley.tvsmoodlemobile</string>
 	<key>PROJECT_ID</key>
 	<string>tvs-moodle</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:38616514770:ios:087589575f6554766e2d0b</string>
+	<string>1:38616514770:ios:2f4a9f24670c75c26e2d0b</string>
 	<key>DATABASE_URL</key>
 	<string>https://tvs-moodle.firebaseio.com</string>
 </dict>
