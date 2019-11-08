@@ -1,42 +1,37 @@
 {
   "project_info": {
-    "project_number": "694767596569",
-    "firebase_url": "https://moodlemobile-push.firebaseio.com",
-    "project_id": "moodlemobile-push",
-    "storage_bucket": "moodlemobile-push.appspot.com"
+    "project_number": "698748529421",
+    "firebase_url": "https://hwcs-vle.firebaseio.com",
+    "project_id": "hwcs-vle",
+    "storage_bucket": "hwcs-vle.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:694767596569:android:a4cdad4d168c9d1a",
+        "mobilesdk_app_id": "1:698748529421:android:322bc5be01c44c43681e44",
         "android_client_info": {
-          "package_name": "com.moodle.moodlemobile"
+          "package_name": "uk.sch.hants.harrowway.hwcsmoodlemobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "694767596569-icveqqa2n56oh44l6ev1dr2oh67nh8il.apps.googleusercontent.com",
+          "client_id": "698748529421-o9mi01b4n9rigv3374fhs4j4o731gtu7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCb2zogu0P_aZ2LNgdwzshWExITPKTXJyk"
-        },
-        {
-          "current_key": "AIzaSyDRT1HwT0gSsTty0whOVtoNKAh8SPrJXLE"
+          "current_key": "AIzaSyDPL7DBB0koss0lukOIiefnqRegiVjMuSY"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698748529421-o9mi01b4n9rigv3374fhs4j4o731gtu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
