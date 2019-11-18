@@ -423,6 +423,7 @@ export class CorePushNotificationsProvider {
      * @param {any} notification Notification.
      */
     notificationClicked(notification: any): void {
+        this.logger.log('notificationClicked: ');
         this.initDelegate.ready().then(() => {
             this.pushNotificationsDelegate.clicked(notification);
         });
@@ -438,6 +439,8 @@ export class CorePushNotificationsProvider {
     onMessageReceived(notification: any): void {
         const data = notification ? notification.additionalData : {};
 
+        this.logger.log('TVS: onMessageReceived called');
+
         this.sitesProvider.getSite(data.site).then(() => {
 
             if (typeof data.customdata == 'string') {
@@ -445,6 +448,7 @@ export class CorePushNotificationsProvider {
             }
 
             if (this.utils.isTrueOrOne(data.foreground)) {
+                this.logger.log('TVS: onMessageReceived called with foreground');
                 // If the app is in foreground when the notification is received, it's not shown. Let's show it ourselves.
                 if (this.localNotificationsProvider.isAvailable()) {
                     const localNotif: ILocalNotification = {
@@ -502,6 +506,7 @@ export class CorePushNotificationsProvider {
                     this.pushNotificationsDelegate.received(data);
                 });
             } else {
+                this.logger.log('TVS: onMessageReceived called with background');
                 // The notification was clicked.
                 this.notificationClicked(data);
             }
@@ -669,6 +674,7 @@ export class CorePushNotificationsProvider {
 
                 pushObject.on('notification').subscribe((notification: any) => {
                     // Execute the callback in the Angular zone, so change detection doesn't stop working.
+                    this.logger.log('TVS: Configuring on notification to run in angular zone', notification);
                     this.zone.run(() => {
                         this.logger.log('Received a notification', notification);
                         this.onMessageReceived(notification);

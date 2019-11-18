@@ -85,6 +85,8 @@ export class CorePushNotificationsDelegate {
             return;
         }
 
+        this.logger.log('in notification delegate clicked(): ');
+
         const promises = [];
         let handlers: CorePushNotificationsClickHandler[] = [];
 
