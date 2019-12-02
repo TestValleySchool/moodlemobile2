@@ -161,9 +161,6 @@
       },
       "cordova-plugin-device": {},
       "cordova-plugin-file": {},
-      "cordova-plugin-file-opener2": {
-        "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      },
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-globalization": {},
       "cordova-plugin-inappbrowser": {},
@@ -179,6 +176,9 @@
       "cordova-sqlite-storage": {},
       "cordova-plugin-local-notification": {
         "ANDROID_SUPPORT_V4_VERSION": "26.+"
+      },
+      "cordova-plugin-file-opener2": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
       }
     }
   },
