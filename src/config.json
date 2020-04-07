@@ -2,8 +2,8 @@
     "app_id" : "uk.sch.hants.testvalley.tvsmoodlemobile",
     "appname": "TVS Moodle",
     "desktopappname": "TVS Moodle",
-    "versioncode" : 3720,
-    "versionname" : "3.7.2",
+    "versioncode" : 3820,
+    "versionname" : "3.8.2",
     "cache_update_frequency_usually": 420000,
     "cache_update_frequency_often": 1200000,
     "cache_update_frequency_sometimes": 3600000,
@@ -35,5 +35,6 @@
     "statusbarlighttextandroid": true,
     "statusbarbgremotetheme": "#000000",
     "statusbarlighttextremotetheme": true,
-    "enableanalytics": false
+    "enableanalytics": false,
+    "forceColorScheme": ""
 }
