@@ -1,4 +1,4 @@
-// (C) Copyright 2015 Martin Dougiamas
+// (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ import { CoreAppProvider } from '@providers/app';
 import { CoreUtilsProvider } from '@providers/utils/utils';
 import { CoreCourseProvider } from '@core/course/providers/course';
 import { CoreCourseModuleMainResourceComponent } from '@core/course/classes/main-resource-component';
-import { AddonModPageProvider } from '../../providers/page';
+import { AddonModPageProvider, AddonModPagePage } from '../../providers/page';
 import { AddonModPageHelperProvider } from '../../providers/helper';
 import { AddonModPagePrefetchHandler } from '../../providers/prefetch-handler';
 
@@ -34,7 +34,7 @@ export class AddonModPageIndexComponent extends CoreCourseModuleMainResourceComp
     contents: any;
     displayDescription = true;
     displayTimemodified = true;
-    page: any;
+    page: AddonModPagePage;
 
     protected fetchContentDefaultError = 'addon.mod_page.errorwhileloadingthepage';
 
@@ -64,7 +64,7 @@ export class AddonModPageIndexComponent extends CoreCourseModuleMainResourceComp
     /**
      * Perform the invalidate content function.
      *
-     * @return {Promise<any>} Resolved when done.
+     * @return Resolved when done.
      */
     protected invalidateContent(): Promise<any> {
         return this.pageProvider.invalidateContent(this.module.id, this.courseId);
@@ -73,16 +73,18 @@ export class AddonModPageIndexComponent extends CoreCourseModuleMainResourceComp
     /**
      * Download page contents.
      *
-     * @param {boolean} [refresh] Whether we're refreshing data.
-     * @return {Promise<any>} Promise resolved when done.
+     * @param refresh Whether we're refreshing data.
+     * @return Promise resolved when done.
      */
     protected fetchContent(refresh?: boolean): Promise<any> {
         let downloadFailed = false;
+        let downloadFailError;
 
         // Download content. This function also loads module contents if needed.
-        return this.pagePrefetch.download(this.module, this.courseId).catch(() => {
+        return this.pagePrefetch.download(this.module, this.courseId).catch((error) => {
             // Mark download as failed but go on since the main files could have been downloaded.
             downloadFailed = true;
+            downloadFailError = error;
         }).then(() => {
             if (!this.module.contents.length) {
                 // Try to load module contents for offline usage.
@@ -109,8 +111,8 @@ export class AddonModPageIndexComponent extends CoreCourseModuleMainResourceComp
                         this.page = page;
 
                         // Check if description and timemodified should be displayed.
-                        if (page.displayoptions) {
-                            const options = this.textUtils.unserialize(page.displayoptions) || {};
+                        if (this.page.displayoptions) {
+                            const options = this.textUtils.unserialize(this.page.displayoptions) || {};
                             this.displayDescription = typeof options.printintro == 'undefined' ||
                                     this.utils.isTrueOrOne(options.printintro);
                             this.displayTimemodified = typeof options.printlastmodified == 'undefined' ||
@@ -127,18 +129,18 @@ export class AddonModPageIndexComponent extends CoreCourseModuleMainResourceComp
 
             // Get the page HTML.
             promises.push(this.pageHelper.getPageHtml(this.module.contents, this.module.id).then((content) => {
-                // All data obtained, now fill the context menu.
-                this.fillContextMenu(refresh);
 
                 this.contents = content;
 
                 if (downloadFailed && this.appProvider.isOnline()) {
                     // We could load the main file but the download failed. Show error message.
-                    this.domUtils.showErrorModal('core.errordownloadingsomefiles', true);
+                    this.showErrorDownloadingSomeFiles(downloadFailError);
                 }
             }));
 
             return Promise.all(promises);
+        }).finally(() => {
+            this.fillContextMenu(refresh);
         });
     }
 }
